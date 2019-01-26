@@ -7,6 +7,7 @@ public class PickUp : MonoBehaviour
     public enum pick_up { COLLECT, SPEED, MAGNET, MULTIPLIER };
     public pick_up type;
     public GameObject score;
+    float speed = 1.0f;
 
 	// Use this for initialization
 	void Start ()
@@ -39,6 +40,20 @@ public class PickUp : MonoBehaviour
         {
             // Collect
             score.GetComponent<Score>().Update_Score();
+        }
+
+        Destroy(this.gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (type == pick_up.COLLECT)
+        {
+            if (other.gameObject.tag == "Player")
+            {
+                float step = speed * Time.deltaTime;
+                transform.position = Vector3.MoveTowards(transform.position, other.gameObject.transform.position, step);
+            }
         }
     }
 }
