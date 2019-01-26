@@ -227,6 +227,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f7740b393c909946b6d582b835d3629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &128205893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 128205895}
+  - component: {fileID: 128205894}
+  m_Layer: 0
+  m_Name: score_count
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &128205894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 128205893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87734526720ad8d44aa2976baac5ad8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points: 0
+--- !u!4 &128205895
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 128205893}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &153867241
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,6 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
+  score: {fileID: 128205893}
 --- !u!1 &294223851
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,6 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  score: {fileID: 128205893}
 --- !u!135 &294223853
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -454,6 +497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  score: {fileID: 128205893}
 --- !u!135 &587478740
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -767,7 +811,7 @@ GameObject:
   - component: {fileID: 1693477455}
   - component: {fileID: 1693477454}
   m_Layer: 0
-  m_Name: fat_cat
+  m_Name: round_boy
   m_TagString: pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -785,6 +829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  score: {fileID: 128205893}
 --- !u!65 &1693477455
 BoxCollider:
   m_ObjectHideFlags: 0
