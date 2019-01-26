@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour
 
     bool dead = false;
 
+    public bool magnet = false;
+    float count = 0.0f;
+
     Rigidbody rb;
 
 	// Use this for initialization
@@ -195,7 +198,22 @@ public class PlayerController : MonoBehaviour
         {
             Move();
         }
+
+        if (magnet == true)
+        {
+            count += Time.deltaTime;
+            if (count >= 5.0f)
+            {
+                magnet = false;
+                count = 0.0f;
+            }
+        }
 	}
+
+    public void EnableMagnet()
+    {
+        magnet = true;
+    }
 
     private void OnTriggerEnter(Collider col)
     {
