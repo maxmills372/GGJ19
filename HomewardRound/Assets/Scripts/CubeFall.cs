@@ -15,6 +15,8 @@ public class CubeFall : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
         random_time = Random.Range(0.1f, 1.0f);
+
+        this.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.black);
         //Physics.IgnoreLayerCollision(10, 10);
     } 
 	
@@ -26,12 +28,16 @@ public class CubeFall : MonoBehaviour
         if (timer > random_time)
         {
             rb.isKinematic = false;
-            
+            this.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.Lerp(Color.black, new Color(3.0f, 3.0f, 3.0f), timer));
+
         }
         else
         {
             transform.Translate(-Vector3.forward * Time.deltaTime * 5.0f);
         }
+
         
-	}
+
+
+    }
 }

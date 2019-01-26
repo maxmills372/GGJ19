@@ -7,6 +7,7 @@ public class PickUp : MonoBehaviour
     public enum pick_up { COLLECT, SPEED, MAGNET, MULTIPLIER };
     public pick_up type;
     public GameObject score;
+    public GameObject player;
     float speed = 1.0f;
 
 	// Use this for initialization
@@ -30,6 +31,7 @@ public class PickUp : MonoBehaviour
         if (type == pick_up.MAGNET)
         {
             // Enable magnet collider
+            player.GetComponent<PlayerController>().EnableMagnet();
         }
         if (type == pick_up.MULTIPLIER)
         {
@@ -49,7 +51,7 @@ public class PickUp : MonoBehaviour
     {
         if (type == pick_up.COLLECT)
         {
-            if (other.gameObject.tag == "Player")
+            if (other.gameObject.tag == "Player" && player.GetComponent<PlayerController>().magnet == true)
             {
                 float step = speed * Time.deltaTime;
                 transform.position = Vector3.MoveTowards(transform.position, other.gameObject.transform.position, step);
