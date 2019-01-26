@@ -894,20 +894,25 @@ Prefab:
     m_Modifications:
     - target: {fileID: 114012108031688870, guid: fe175c5bdb5063a469856a0d19e49a85,
         type: 2}
+      propertyPath: animals.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114012108031688870, guid: fe175c5bdb5063a469856a0d19e49a85,
+        type: 2}
       propertyPath: pick_ups.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4610277435530964, guid: fe175c5bdb5063a469856a0d19e49a85, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.016542435
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4610277435530964, guid: fe175c5bdb5063a469856a0d19e49a85, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.28355503
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4610277435530964, guid: fe175c5bdb5063a469856a0d19e49a85, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 6.0936375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4610277435530964, guid: fe175c5bdb5063a469856a0d19e49a85, type: 2}
       propertyPath: m_LocalRotation.x
@@ -932,7 +937,7 @@ Prefab:
     - target: {fileID: 114012108031688870, guid: fe175c5bdb5063a469856a0d19e49a85,
         type: 2}
       propertyPath: obstacle_spawn_rate
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 114012108031688870, guid: fe175c5bdb5063a469856a0d19e49a85,
         type: 2}
@@ -942,7 +947,7 @@ Prefab:
     - target: {fileID: 114012108031688870, guid: fe175c5bdb5063a469856a0d19e49a85,
         type: 2}
       propertyPath: pick_up_spawn_rate
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 114012108031688870, guid: fe175c5bdb5063a469856a0d19e49a85,
         type: 2}
@@ -971,13 +976,43 @@ Prefab:
     - target: {fileID: 114012108031688870, guid: fe175c5bdb5063a469856a0d19e49a85,
         type: 2}
       propertyPath: win_time
-      value: 0.1
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 114012108031688870, guid: fe175c5bdb5063a469856a0d19e49a85,
         type: 2}
       propertyPath: m_noOfTiles
-      value: 20
+      value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 114012108031688870, guid: fe175c5bdb5063a469856a0d19e49a85,
+        type: 2}
+      propertyPath: animals.Array.data[0]
+      value: 
+      objectReference: {fileID: 1256936907411108, guid: 9f426a5ab00f4f54d8ddb1ea7fca82b3,
+        type: 2}
+    - target: {fileID: 114012108031688870, guid: fe175c5bdb5063a469856a0d19e49a85,
+        type: 2}
+      propertyPath: animals.Array.data[1]
+      value: 
+      objectReference: {fileID: 1479051013429298, guid: 1daed318f068e134ba3ada6acbb7d68c,
+        type: 2}
+    - target: {fileID: 114012108031688870, guid: fe175c5bdb5063a469856a0d19e49a85,
+        type: 2}
+      propertyPath: animals.Array.data[2]
+      value: 
+      objectReference: {fileID: 1931138168209080, guid: c2510989072c55d4ab094934e5aa2f63,
+        type: 2}
+    - target: {fileID: 114012108031688870, guid: fe175c5bdb5063a469856a0d19e49a85,
+        type: 2}
+      propertyPath: animals.Array.data[3]
+      value: 
+      objectReference: {fileID: 1405922785096022, guid: bc382543a34c1284abc5d0e0d63e67b4,
+        type: 2}
+    - target: {fileID: 114012108031688870, guid: fe175c5bdb5063a469856a0d19e49a85,
+        type: 2}
+      propertyPath: animals.Array.data[4]
+      value: 
+      objectReference: {fileID: 1579740324013030, guid: 7e68e6bc92ee3d94aa6c62ab7c0dbee7,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 114219034501839760, guid: fe175c5bdb5063a469856a0d19e49a85, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fe175c5bdb5063a469856a0d19e49a85, type: 2}

@@ -70,6 +70,14 @@ public class LevelController : MonoBehaviour
         StartCoroutine(SpeedWait());
     }
 
+    void SpawnObj(float rate, GameObject[] objs, float height)
+    {
+        if ((int)Random.Range(0, rate) == 0)
+        {
+            Instantiate(objs[Random.Range(0, objs.Length)], new Vector3(Random.Range(-5, 6), height, m_noOfTiles - length), Quaternion.identity);
+        }
+    }
+
 	// Update is called once per frame
 	void Update ()
     {
@@ -92,18 +100,9 @@ public class LevelController : MonoBehaviour
             }
             else
             {
-                if ((int)Random.Range(0, obstacle_spawn_rate) == 0)
-                {
-                    Instantiate(obstcales[Random.Range(0, obstcales.Length)], new Vector3(Random.Range(-5, 6), 1.0f, m_noOfTiles), Quaternion.identity);
-                }
-                else if ((int)Random.Range(0, pick_up_spawn_rate) == 0)
-                {
-                    Instantiate(pick_ups[Random.Range(0, pick_ups.Length)], new Vector3(Random.Range(-5, 6), 1.0f, m_noOfTiles), Quaternion.identity);
-                }
-                else if ((int)Random.Range(0, animal_spawn_rate) == 0)
-                {
-                    Instantiate(animals[Random.Range(0, animals.Length)], new Vector3(Random.Range(-5, 6), 1.0f, m_noOfTiles), Quaternion.identity);
-                }
+                SpawnObj(obstacle_spawn_rate, obstcales, 1.0f);
+                SpawnObj(animal_spawn_rate, animals, 2.0f);
+                SpawnObj(pick_up_spawn_rate, pick_ups, 1.0f);
             }
         }
         win_timer += Time.deltaTime;
