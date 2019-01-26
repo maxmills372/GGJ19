@@ -21,11 +21,11 @@ GameObject:
   - component: {fileID: 4655615379021016}
   - component: {fileID: 33880393667607798}
   - component: {fileID: 23175282651454096}
-  - component: {fileID: 135623462991082234}
+  - component: {fileID: 65803483996191408}
   - component: {fileID: 114101952369874052}
   m_Layer: 0
   m_Name: MultiplierPowerUp
-  m_TagString: pickup
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,9 +36,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1148541320880978}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 0.36, z: -1.2130728}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.3936, y: 0.24445, z: -1.9692}
+  m_LocalScale: {x: 1.9564159, y: 1.9564167, z: 1.9564167}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -58,7 +58,10 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 09dcc5cd502a81d4a9f932989caea441, type: 2}
+  - {fileID: 2100000, guid: 8f92a9a662ab6f844b97b48083d38c00, type: 3}
+  - {fileID: 2100002, guid: 8f92a9a662ab6f844b97b48083d38c00, type: 3}
+  - {fileID: 2100004, guid: 8f92a9a662ab6f844b97b48083d38c00, type: 3}
+  - {fileID: 2100006, guid: 8f92a9a662ab6f844b97b48083d38c00, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,7 +87,19 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1148541320880978}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 8f92a9a662ab6f844b97b48083d38c00, type: 3}
+--- !u!65 &65803483996191408
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1148541320880978}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22384465, y: 0.19192341, z: 0.13496812}
+  m_Center: {x: 0, y: -0.0016106889, z: 0}
 --- !u!114 &114101952369874052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,15 +114,3 @@ MonoBehaviour:
   type: 3
   score: {fileID: 0}
   player: {fileID: 0}
---- !u!135 &135623462991082234
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1148541320880978}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
