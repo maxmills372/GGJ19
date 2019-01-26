@@ -6,6 +6,7 @@ public class PickUp : MonoBehaviour
 {
     public enum pick_up { COLLECT, SPEED, MAGNET, MULTIPLIER };
     public pick_up type;
+    public GameObject score;
 
 	// Use this for initialization
 	void Start ()
@@ -28,15 +29,16 @@ public class PickUp : MonoBehaviour
         if (type == pick_up.MAGNET)
         {
             // Enable magnet collider
-            // Collect animals
         }
         if (type == pick_up.MULTIPLIER)
         {
             // Increase score multiplier
+            score.GetComponent<Score>().Enable_Multiplier();
         }
         if (type == pick_up.COLLECT)
         {
             // Collect
+            score.GetComponent<Score>().Update_Score();
         }
     }
 }

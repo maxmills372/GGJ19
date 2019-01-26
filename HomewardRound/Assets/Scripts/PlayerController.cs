@@ -185,4 +185,16 @@ public class PlayerController : MonoBehaviour
     {
         Move();
 	}
+
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "pickup")
+        {
+            col.gameObject.GetComponent<PickUp>().Activate();
+        }
+        else if (col.gameObject.tag == "obstacle")
+        {
+
+        }
+    }
 }
