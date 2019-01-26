@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
 
     bool grounded = true;
 
+    bool dead = false;
+
     Rigidbody rb;
 
 	// Use this for initialization
@@ -153,6 +155,12 @@ public class PlayerController : MonoBehaviour
 
             transform.position = new Vector3(transform.position.x, transform.position.y, z_stop);
         }
+
+        if(transform.position.z < -9.5)
+        {
+            dead = true;
+            gameObject.AddComponent<Rigidbody>();
+        }
     }
 
     public void HitObstacle()
@@ -183,7 +191,10 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        Move();
+        if (!dead)
+        {
+            Move();
+        }
 	}
 
     private void OnTriggerEnter(Collider col)
