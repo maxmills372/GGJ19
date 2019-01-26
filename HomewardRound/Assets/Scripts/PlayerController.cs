@@ -164,7 +164,7 @@ public class PlayerController : MonoBehaviour
         {
             dead = true;
             Destroy(rb);
-            gameObject.AddComponent<Rigidbody>();
+            
 
             //rb.isKinematic = false;
         }
@@ -211,6 +211,11 @@ public class PlayerController : MonoBehaviour
                 magnet = false;
                 count = 0.0f;
             }
+        }
+
+        if(GetComponent<Rigidbody>() == null)
+        {
+            gameObject.AddComponent<Rigidbody>();
         }
 	}
 
