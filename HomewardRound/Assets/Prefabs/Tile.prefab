@@ -108,5 +108,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd1518e73b161d54ca3f096e5bd4b366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MoveSpeed: 5
+  m_MoveSpeed: 3
   cubeParent: {fileID: 1362151389780566, guid: 26dfed319d91b4d468e6ffc4f1804004, type: 2}

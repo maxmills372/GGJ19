@@ -2,18 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class Manager : MonoBehaviour //Singleton<Manager>
+{
+    public float m_MoveSpeed = 3.0f;
+}
+
 public class TileMove : MonoBehaviour
 {
-    public float m_MoveSpeed = 5f;
+    //public float m_MoveSpeed = 3f;
     GameObject controller;
 
     public GameObject cubeParent;
 
+    Manager manager_;
+
     // Use this for initialization
     void Start ()
     {
-		
-	}
+        manager_ = Manager.instance;
+        Debug.Log(manager_.m_MoveSpeed);
+
+    }
 	
     public void Init(GameObject g)
     {

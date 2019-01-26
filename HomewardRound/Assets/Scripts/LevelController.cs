@@ -11,49 +11,43 @@ public class LevelController : MonoBehaviour {
 
     float length;
 
+    float freq = 0.0f;
+
     // Use this for initialization
     void Start () {
 
-        length = tile_prefab.transform.localScale.z ;
+        length = tile_prefab.transform.localScale.z;
+        move_speed
+        freq = 0.9f / move_speed;
+
         for (int i = 0; i < m_noOfTiles; i++)
         {
             GameObject g = Instantiate(tile_prefab, new Vector3(0f, 0f, i * length), Quaternion.identity);
             g.GetComponent<TileMove>().Init(this.gameObject);
 
         }
-        //Invoke("TileDead", timer);
     }
 	
     public void TileDead()
     {
+        // Creates new tile at the start of the tiles
         GameObject g = Instantiate(tile_prefab, new Vector3(0f, 0f, (m_noOfTiles * length) - length), Quaternion.identity);
         g.GetComponent<TileMove>().Init(this.gameObject);
-        //Invoke("TileDead", timer);
+
+
     }
-
-
-
+    
 	// Update is called once per frame
 	void Update ()
     {
-        
-        if(timer > 0.18f)
+        // Makes a new Tile at given frequency
+        if(timer > 0.3f)
         {
             TileDead();
             timer = 0.0f;
         }
         timer += Time.deltaTime;
 
-        //if (transform.position.z > -4.0f)
-        //{
-
-        //    //Instantiate(this.gameObject, new Vector3(0f, 0f, temp.GetComponent<Transform>().position.z - (half_length * 4.0f)), Quaternion.identity) as GameObject;
-
-        //    //Destroy(level_platforms[0]);
-        //    //Destroy(this.gameObject);
-
-
-
-        //}
+      
     }
 }
