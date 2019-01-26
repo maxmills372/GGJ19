@@ -9,6 +9,8 @@ public class TileMove : MonoBehaviour
 
     public GameObject cubeParent;
 
+    float t = 0.0f;
+
     // Use this for initialization
     void Start ()
     {
@@ -32,5 +34,7 @@ public class TileMove : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        this.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.Lerp(Color.black, new Color(2.0f, 2.0f, 2.0f), t));
+        t += Time.deltaTime;
     }
 }
