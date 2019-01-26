@@ -53,5 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tile_prefab: {fileID: 1908560425857924, guid: 6730d1e4b9cdceb4d9031c7f76744c6c,
     type: 2}
-  m_noOfTiles: 150
-  timer: 2
+  m_noOfTiles: 10
+  m_MoveSpeed: 0
+  timer: 0

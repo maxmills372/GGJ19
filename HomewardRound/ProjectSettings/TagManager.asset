@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - pickup
+  - LevelController
+  - FallPlane
+  - Obstacle
   layers:
   - Default
   - TransparentFX

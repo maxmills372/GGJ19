@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         y_stop = transform.position.y;
         z_stop = transform.position.z;
+        rb = GetComponent<Rigidbody>();
     }
 	
     void xMove()
@@ -162,12 +163,15 @@ public class PlayerController : MonoBehaviour
         if(transform.position.z < -9.5)
         {
             dead = true;
+            Destroy(rb);
             gameObject.AddComponent<Rigidbody>();
+
+            //rb.isKinematic = false;
         }
     }
 
     public void HitObstacle()
-    {
+    { 
         z_acceleration = -z_force;
     }
 
@@ -221,9 +225,16 @@ public class PlayerController : MonoBehaviour
         {
             col.gameObject.GetComponent<PickUp>().Activate();
         }
-        else if (col.gameObject.tag == "obstacle")
-        {
+         
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            z_acceleration = -z_force;
+            transform.position -= new Vector3(0.0f, 0.0f, 0.001f);
+            collision.gameObject.SendMessage("BreakIt");
         }
     }
 }

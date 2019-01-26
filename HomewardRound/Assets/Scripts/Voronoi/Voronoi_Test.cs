@@ -36,6 +36,8 @@ public class Voronoi_Test : MonoBehaviour
 	bool broken_up = false; 
 	bool combined = false;
 
+    
+
 	[System.Serializable]
 	public struct region
 	{
@@ -67,6 +69,21 @@ public class Voronoi_Test : MonoBehaviour
 
        
     }
+    void BreakIt()
+    {
+        float st_ = Time.realtimeSinceStartup;
+
+        //m_VoronoiBreak = false;
+        //StartCoroutine("BreakObject");
+        CreateGrid();
+        VoronoiBreak();
+        CombineMeshes();
+        AddRigidbodies();
+
+        float et_ = Time.realtimeSinceStartup;
+        print("Finished voronoi break: " + (et_ - st_));
+    }
+
     // Update is called once per frame
     void Update ()
 	{
@@ -96,18 +113,7 @@ public class Voronoi_Test : MonoBehaviour
 
         if (m_VoronoiBreak)
 		{
-			float st_ = Time.realtimeSinceStartup;
-			
-			m_VoronoiBreak = false;
-			//StartCoroutine("BreakObject");
-			CreateGrid();
-			VoronoiBreak();
-			CombineMeshes();
-			AddRigidbodies();
-
-			float et_ = Time.realtimeSinceStartup;
-			print("Finished voronoi break: " + (et_ - st_));
-
+            BreakIt();
 		}
 
 		if(create_grid)
@@ -115,7 +121,7 @@ public class Voronoi_Test : MonoBehaviour
 			CreateGrid();
 		}
 		// If broken and grid is created
-		if(voronoi_break && created_)
+		if(m_VoronoiBreak && created_)
 		{
 			VoronoiBreak();
 		}
@@ -133,6 +139,11 @@ public class Voronoi_Test : MonoBehaviour
 			object_pooler.AddToPool("Cube",resolution * resolution*resolution);
 			Reset_Object();
 		}
+
+        if(voronoi_break)
+        {
+            //voronoi_break = false;
+        }
 	}
 
 	// Waits until functions are finished -- not needed as does this already, i just like the code
@@ -141,7 +152,7 @@ public class Voronoi_Test : MonoBehaviour
 
 		yield return new WaitUntil(() => CreateGrid());
 		yield return new WaitUntil(() => VoronoiBreak());
-		yield return new WaitUntil(() =>CombineMeshes());
+		yield return new WaitUntil(() => CombineMeshes());
 
 		AddRigidbodies();
 
@@ -201,8 +212,8 @@ public class Voronoi_Test : MonoBehaviour
 			// Assign control point
 			regions[r].control_point = region_sphere;
 
-			// Assign random colour
-			temp_color = new Color(Random.Range(0f,1f),Random.Range(0f,1f),Random.Range(0f,1f));
+            // Assign random colour
+            temp_color = Color.green;// new Color(Random.Range(0f,1f),Random.Range(0f,1f),Random.Range(0f,1f));
 			region_sphere.GetComponent<Renderer>().material.color = temp_color;
 			regions[r].color = temp_color;		
 
@@ -264,8 +275,8 @@ public class Voronoi_Test : MonoBehaviour
 			//regions[r].control_point.AddComponent<Rigidbody>();
 		}
 
-		// Stop breaking
-		voronoi_break = false;
+        // Stop breaking
+        m_VoronoiBreak = false;
 		broken_up = true;
 		created_ = false;
 
@@ -337,7 +348,7 @@ public class Voronoi_Test : MonoBehaviour
 			}
 		}
 
-		voronoi_break = false;
+        m_VoronoiBreak = false;
 		created_ = false;
 		broken_up = false;
 
@@ -359,5 +370,7 @@ public class Voronoi_Test : MonoBehaviour
 	}
 
     
-      
+
+    
+
 }
