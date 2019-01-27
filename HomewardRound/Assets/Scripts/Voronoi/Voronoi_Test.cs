@@ -62,21 +62,18 @@ public class Voronoi_Test : MonoBehaviour
 			rigidbody_clone = transform.parent.Find("Rigidbody_Clone").gameObject.GetComponent<Rigidbody>();
 		}
         temp_color = GetComponent<Renderer>().material.color;
-	}
 
-    private void OnMouseOver()
-    {
-        
-
-       
+        CreateGrid();
     }
+
+    
     void BreakIt()
     {
         float st_ = Time.realtimeSinceStartup;
 
         //m_VoronoiBreak = false;
         //StartCoroutine("BreakObject");
-        CreateGrid();
+        
         VoronoiBreak();
         CombineMeshes();
         AddRigidbodies();
@@ -91,7 +88,7 @@ public class Voronoi_Test : MonoBehaviour
         //resolution = (int)slider1.value;
         //region_amount = (int)slider2.value;
 
-        if (Input.GetMouseButtonDown(0))
+        /*if (Input.GetMouseButtonDown(0))
         {
             m_VoronoiBreak = true;
 
@@ -110,7 +107,7 @@ public class Voronoi_Test : MonoBehaviour
         else
         {
             reset_object = false;
-        }
+        }*/
 
         if (m_VoronoiBreak)
 		{
@@ -222,10 +219,13 @@ public class Voronoi_Test : MonoBehaviour
 			regions[r].parent = region_sphere;
 
 			regions[r].members = new List<GameObject>();
-		}
+
+            regions[r].control_point.GetComponent<MeshRenderer>().enabled = false;
+
+        }
 
 		// Hide actual object
-		this.GetComponent<MeshRenderer>().enabled = false;
+		//this.GetComponent<MeshRenderer>().enabled = false;
 
 		create_grid = false;
 		created_ = true;
@@ -234,8 +234,11 @@ public class Voronoi_Test : MonoBehaviour
 
 	public bool VoronoiBreak()
 	{
-		// Find closest region for every object
-		for(int i = 0; i<resolution; i++)
+        // Hide actual object
+        this.GetComponent<MeshRenderer>().enabled = false;
+
+        // Find closest region for every object
+        for (int i = 0; i<resolution; i++)
 		{
 			for(int j = 0; j<resolution; j++)
 			{
@@ -248,8 +251,8 @@ public class Voronoi_Test : MonoBehaviour
 						// Distance between object and region control point
 						temp_dist = Euclidean_Dist_3D(grid_[i,j,k].transform.position, regions[r].control_point.transform.position);
 
-						// If closer than current closest
-						if(temp_dist < closest_dist)
+                        // If closer than current closest
+                        if (temp_dist < closest_dist)
 						{	
 							// Update closest and store region array identifier
 							closest_dist = temp_dist;
@@ -271,10 +274,13 @@ public class Voronoi_Test : MonoBehaviour
 				// Assign a parent and color of region
 				m.transform.parent = regions[r].control_point.transform;
 				m.GetComponent<Renderer>().material.color = regions[r].color;
-			}
-			//regions[r].control_point.SendMessage("CombineChildMeshes");
-			//regions[r].control_point.AddComponent<Rigidbody>();
-		}
+
+               // m.GetComponent<MeshRenderer>().enabled = true;
+
+            }
+            //regions[r].control_point.SendMessage("CombineChildMeshes");
+            //regions[r].control_point.AddComponent<Rigidbody>();
+        }
 
         // Stop breaking
         m_VoronoiBreak = false;

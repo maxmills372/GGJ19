@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114495109425664530}
   m_Layer: 0
   m_Name: Pig
-  m_TagString: Untagged
+  m_TagString: pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,7 +141,7 @@ SphereCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1015385808557028}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 062c66a4b07031a4f9e663daf0534ef9, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
