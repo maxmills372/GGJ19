@@ -9,6 +9,9 @@ public class PickUp : MonoBehaviour
     public GameObject score;
     public GameObject player;
     public GameObject lvl_cont;
+    public AudioSource pickup_audio;
+    public AudioClip sound_clip;
+
     float speed = 7.0f;
 
     bool moving = false;
@@ -19,10 +22,17 @@ public class PickUp : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         score = GameObject.FindGameObjectWithTag("Score");
         lvl_cont = GameObject.FindGameObjectWithTag("LevelController");
+
     }
-	
-	// Update is called once per frame
-	void Update ()
+    private void Awake()
+    {
+        pickup_audio = GameObject.Find("Audio Source Pickup").GetComponent<AudioSource>();
+        if (GetComponent<AudioSource>())
+            sound_clip = GetComponent<AudioSource>().clip;
+
+    }
+    // Update is called once per frame
+    void Update ()
     {
         if (moving)
         {
@@ -38,11 +48,15 @@ public class PickUp : MonoBehaviour
 
     public void Activate()
     {
+        if (sound_clip != null)
+            pickup_audio.clip = sound_clip;
+            pickup_audio.Play();
+
         if (type == pick_up.SPEED)
         {
             // Decrease speed of level movement for 5 seconds
             lvl_cont.GetComponent<LevelController>().ChangeSpeed();
-
+            
         }
         if (type == pick_up.MAGNET)
         {
@@ -69,7 +83,7 @@ public class PickUp : MonoBehaviour
         {
             if (other.gameObject.tag == "Player" && other.GetComponent<PlayerController>().magnet == true)
             {
-                moving = true; 
+                moving = true;               
             }
         }
     }
