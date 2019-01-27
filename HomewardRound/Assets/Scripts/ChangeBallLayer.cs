@@ -33,12 +33,13 @@ public class ChangeBallLayer : MonoBehaviour {
         switch(trigger_type)
         {
             case TriggerType.Start:
-                SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
+                SceneManager.UnloadSceneAsync(0);
+                SceneManager.LoadScene(1);
 
                 break;
 
             case TriggerType.Options:
-                SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
+                SceneManager.LoadScene(0);
 
                 break;
             case TriggerType.Exit:

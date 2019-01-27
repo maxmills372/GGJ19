@@ -14,6 +14,7 @@ public class TileMove : MonoBehaviour
     GameObject m_plane_fall;
 
     public bool is_tile = false;
+    public bool is_environment = false;
 
     Transform death;
 
@@ -43,11 +44,16 @@ public class TileMove : MonoBehaviour
 
                 Destroy(this.gameObject);
             }
+            if (is_environment)
+            {
+                gameObject.AddComponent<Rigidbody>();
+
+            }
         }
 
         if (transform.position.y < death.position.y)
         {
-            if (gameObject.transform.parent != null)
+            if (gameObject.transform.parent != null && !is_environment)
             {
                 Destroy(transform.parent.gameObject);
             }
@@ -55,6 +61,8 @@ public class TileMove : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+
+            
         }
 
     }
