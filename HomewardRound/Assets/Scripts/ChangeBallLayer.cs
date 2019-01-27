@@ -39,7 +39,9 @@ public class ChangeBallLayer : MonoBehaviour {
                 break;
 
             case TriggerType.Options:
-               
+                SceneManager.UnloadSceneAsync(0);
+
+                SceneManager.LoadScene(2);
 
                 break;
             case TriggerType.Exit:
