@@ -7,7 +7,7 @@ public class ChangeBallLayer : MonoBehaviour {
     public int LayerOnEnter; // BallInHole
     public int LayerOnExit;  // BallOnTable
 	
-    public enum TriggerType { Start,Exit,Options};
+    public enum TriggerType { Start,Exit,Options, Back };
     public TriggerType trigger_type; 
 
     void OnTriggerEnter(Collider other)
@@ -39,11 +39,16 @@ public class ChangeBallLayer : MonoBehaviour {
                 break;
 
             case TriggerType.Options:
-                SceneManager.LoadScene(0);
+               
 
                 break;
             case TriggerType.Exit:
                 Application.Quit();
+                break;
+            case TriggerType.Back:
+                SceneManager.UnloadSceneAsync(2);
+
+                SceneManager.LoadScene(0);
                 break;
             default: break;
         }
