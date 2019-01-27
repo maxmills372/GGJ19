@@ -37,8 +37,6 @@ public class CubeFall : MonoBehaviour
         if (timer > random_time)
         {
             rb.isKinematic = false;
-            
-
         }
         else
         {

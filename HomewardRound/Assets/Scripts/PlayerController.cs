@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody rb;
 
+    public Transform death;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -160,12 +162,12 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, z_stop);
         }
 
-        if(transform.position.z < -9.5)
+        if(transform.position.z < death.position.z)
         {
             dead = true;
             Destroy(rb);
-            
 
+            Camera.main.gameObject.GetComponent<TileMove>().enabled = true;
             //rb.isKinematic = false;
         }
     }
@@ -226,20 +228,32 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "pickup")
-        {
-            col.gameObject.GetComponent<PickUp>().Activate();
-        }
-         
+                 
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Obstacle")
         {
-            z_acceleration = -z_force;
+            Vector3 pos = collision.gameObject.transform.position;
+            if (transform.position.z < pos.z && transform.position.y < pos.y + 0.5f)
+            {
+                z_acceleration = -z_force;
+            }
             transform.position -= new Vector3(0.0f, 0.0f, 0.001f);
             collision.gameObject.SendMessage("BreakIt");
+        }
+        else if (collision.gameObject.tag == "pickup")
+        {
+            collision.gameObject.GetComponent<PickUp>().Activate();
+        }
+        else if (collision.gameObject.tag == "Home")
+        {
+            collision.gameObject.SendMessage("BreakIt");
+        }
+        else if (collision.gameObject.tag == "Win")
+        {
+            GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>().m_MoveSpeed = 0.0f; ;
         }
     }
 }

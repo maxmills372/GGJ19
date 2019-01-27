@@ -8,6 +8,10 @@ TagManager:
   - LevelController
   - FallPlane
   - Obstacle
+  - Score
+  - DeathPlane
+  - Home
+  - Win
   layers:
   - Default
   - TransparentFX

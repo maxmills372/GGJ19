@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 75d18b2d768fe4a4cba0d62087ae608a
+guid: 26d8e350735b8b5479397806399c8915
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: PizzaBase
-    2100002: PizzaCrust
-    2100004: Cheese
-    2100006: Peperoniiii
-    2100008: Pepper
-    2100010: Mushroom
+    2100000: lambert1
+    2100002: PIgBlack
+    2100004: PinkWhite
+    2100006: PigPink
+    2100008: PigPink2
+    2100010: PIgPink3
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Pizza
+    4300000: Pig
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -45,7 +45,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 2
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1

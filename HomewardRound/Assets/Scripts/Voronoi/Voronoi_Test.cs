@@ -51,7 +51,7 @@ public class Voronoi_Test : MonoBehaviour
 
 
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{
 		object_pooler = Object_Pool.instance;
 
@@ -61,8 +61,9 @@ public class Voronoi_Test : MonoBehaviour
 			region_parent= transform.parent.Find("Region_Parent").gameObject;
 			rigidbody_clone = transform.parent.Find("Rigidbody_Clone").gameObject.GetComponent<Rigidbody>();
 		}
-
+        temp_color = GetComponent<Renderer>().material.color;
 	}
+
     private void OnMouseOver()
     {
         
@@ -213,7 +214,7 @@ public class Voronoi_Test : MonoBehaviour
 			regions[r].control_point = region_sphere;
 
             // Assign random colour
-            temp_color = Color.green;// new Color(Random.Range(0f,1f),Random.Range(0f,1f),Random.Range(0f,1f));
+            // new Color(Random.Range(0f,1f),Random.Range(0f,1f),Random.Range(0f,1f));
 			region_sphere.GetComponent<Renderer>().material.color = temp_color;
 			regions[r].color = temp_color;		
 

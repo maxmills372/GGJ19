@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 75d18b2d768fe4a4cba0d62087ae608a
+guid: 907945640f5090b44a4cf26ac0df3779
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: PizzaBase
-    2100002: PizzaCrust
-    2100004: Cheese
-    2100006: Peperoniiii
-    2100008: Pepper
-    2100010: Mushroom
+    2100000: PufferBlack
+    2100002: PufferWhiter
+    2100004: PufferLips
+    2100006: PufferTails
+    2100008: PufferWhite
+    2100010: PufferYellow
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Pizza
+    4300000: Puffer
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -45,7 +45,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 2
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1

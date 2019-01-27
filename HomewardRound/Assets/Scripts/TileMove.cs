@@ -15,10 +15,12 @@ public class TileMove : MonoBehaviour
 
     public bool is_tile = false;
 
+    Transform death;
+
     // Use this for initialization
     void Start ()
     {
-        
+        death = GameObject.FindGameObjectWithTag("DeathPlane").transform;
         lvl_controller = GameObject.FindGameObjectWithTag("LevelController");
         m_plane_fall = GameObject.FindGameObjectWithTag("FallPlane");
     }
@@ -40,6 +42,18 @@ public class TileMove : MonoBehaviour
                 Instantiate(cubeParent, transform.position, Quaternion.identity, null);
 
                 Destroy(this.gameObject);
+            }
+        }
+
+        if (transform.position.y < death.position.y)
+        {
+            if (gameObject.transform.parent != null)
+            {
+                Destroy(transform.parent.gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
             }
         }
 

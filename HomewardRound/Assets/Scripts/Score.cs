@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    int score;
+    public int score;
     int score_multiplier;
     public int points = 50;
     bool multiplier_enabled;
     float count;
+    public Text score_text;
 
 	// Use this for initialization
 	void Start ()
@@ -31,6 +33,7 @@ public class Score : MonoBehaviour
                 count = 0.0f;
             }
         }
+        score_text.text = "" + score;
     }
 
     public void Update_Score()
@@ -42,11 +45,13 @@ public class Score : MonoBehaviour
     {
         score_multiplier += 1;
         multiplier_enabled = true;
+        score_text.color = Color.yellow;
     }
     
     void Disable_Multiplier()
     {
         score_multiplier = 1;
-        multiplier_enabled = true;
+        multiplier_enabled = false;
+        score_text.color = Color.black;
     }
 }
