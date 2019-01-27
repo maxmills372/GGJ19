@@ -46,7 +46,10 @@ public class TileMove : MonoBehaviour
             }
             if (is_environment)
             {
-                gameObject.AddComponent<Rigidbody>();
+                if(!gameObject.GetComponent<Rigidbody>())
+                {
+                    gameObject.AddComponent<Rigidbody>();
+                }
 
             }
         }

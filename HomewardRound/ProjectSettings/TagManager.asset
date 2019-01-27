@@ -12,6 +12,7 @@ TagManager:
   - DeathPlane
   - Home
   - Win
+  - Cone
   layers:
   - Default
   - TransparentFX

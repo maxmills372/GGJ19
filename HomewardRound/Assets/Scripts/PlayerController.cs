@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -34,6 +35,9 @@ public class PlayerController : MonoBehaviour
     public bool magnet = false;
     float count = 0.0f;
 
+    public GameObject WinText;
+    public GameObject LoseText;
+
     Rigidbody rb;
 
     public Transform death;
@@ -44,6 +48,9 @@ public class PlayerController : MonoBehaviour
         y_stop = transform.position.y;
         z_stop = transform.position.z;
         rb = GetComponent<Rigidbody>();
+
+        LoseText.SetActive(false);
+        WinText.SetActive(false);
     }
 	
     void xMove()
@@ -164,10 +171,13 @@ public class PlayerController : MonoBehaviour
 
         if(transform.position.z < death.position.z)
         {
+            // DEATH //
             dead = true;
             Destroy(rb);
 
             Camera.main.gameObject.GetComponent<TileMove>().enabled = true;
+            LoseText.SetActive(true);
+
             //rb.isKinematic = false;
         }
     }
@@ -184,10 +194,10 @@ public class PlayerController : MonoBehaviour
         zMove();
 
         // Gets hit
-        if (Input.GetKeyDown(KeyCode.F))
+        /*if (Input.GetKeyDown(KeyCode.F))
         {
             HitObstacle();
-        }
+        }*/
 
         // Move player
         transform.position += new Vector3(
@@ -203,6 +213,13 @@ public class PlayerController : MonoBehaviour
         if (!dead)
         {
             Move();
+        }
+        else
+        {
+            if(Input.GetKey(KeyCode.Return))
+            {               
+                SceneManager.LoadScene(1);
+            }
         }
 
         if (magnet == true)
@@ -254,7 +271,22 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Win")
         {
-            GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>().m_MoveSpeed = 0.0f; ;
+            GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>().m_MoveSpeed = 0.0f;
+            WinText.SetActive(true);
+
+        }
+        else if (collision.gameObject.tag == "Cone")
+        {
+            Vector3 pos = collision.gameObject.transform.position;
+            if (transform.position.z < pos.z && transform.position.y < pos.y + 0.5f)
+            {
+                z_acceleration = -z_force;
+            }
+            transform.position -= new Vector3(0.0f, 0.0f, 0.001f);
+
+            Debug.Log("CONED");
+            collision.gameObject.GetComponent<Rigidbody>().AddExplosionForce(5000.0f,collision.contacts[0].point,50.0f);
+
         }
     }
 }

@@ -4,6 +4,10 @@ using UnityEngine;
 [RequireComponent(typeof (Rigidbody))]
 public class CubeFall : MonoBehaviour
 {
+    float random_start_time = 1.0f; // 1 // 0.25f
+    float random_end_time = 1.8f; // 2 // 1.25f
+
+
     Rigidbody rb;
     float timer = 0f;
     float random_time = 0f;
@@ -17,7 +21,9 @@ public class CubeFall : MonoBehaviour
         gameObject.AddComponent<Rigidbody>();
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
-        random_time = Random.Range(1.0f, 2.0f);
+       // rb.mass = 15.0f;
+
+        random_time = Random.Range(random_start_time, random_end_time);
         lvl_controller = GameObject.FindGameObjectWithTag("LevelController");
         this.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.black);
         //Physics.IgnoreLayerCollision(10, 10);
