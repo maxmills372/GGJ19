@@ -246,6 +246,7 @@ public class PlayerController : MonoBehaviour
         else if (collision.gameObject.tag == "pickup")
         {
             collision.gameObject.GetComponent<PickUp>().Activate();
+           
         }
         else if (collision.gameObject.tag == "Home")
         {

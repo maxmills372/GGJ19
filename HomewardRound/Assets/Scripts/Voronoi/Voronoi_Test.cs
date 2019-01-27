@@ -21,7 +21,7 @@ public class Voronoi_Test : MonoBehaviour
 	public Rigidbody rigidbody_clone;
     public Slider slider1, slider2;
 
-    Object_Pool object_pooler;
+    public Object_Pool object_pooler;
 
 	GameObject[,,] grid_;
 	int grid_size;
@@ -63,7 +63,7 @@ public class Voronoi_Test : MonoBehaviour
 		}
         temp_color = GetComponent<Renderer>().material.color;
 
-        CreateGrid();
+       
     }
 
     
@@ -73,10 +73,11 @@ public class Voronoi_Test : MonoBehaviour
 
         //m_VoronoiBreak = false;
         //StartCoroutine("BreakObject");
-        
+        CreateGrid();
         VoronoiBreak();
         CombineMeshes();
         AddRigidbodies();
+        GetComponent<AudioSource>().Play();
 
         float et_ = Time.realtimeSinceStartup;
         print("Finished voronoi break: " + (et_ - st_));
@@ -91,7 +92,7 @@ public class Voronoi_Test : MonoBehaviour
         /*if (Input.GetMouseButtonDown(0))
         {
             m_VoronoiBreak = true;
-
+            //BreakIt();
             print("test");
         }
         else
@@ -220,12 +221,12 @@ public class Voronoi_Test : MonoBehaviour
 
 			regions[r].members = new List<GameObject>();
 
-            regions[r].control_point.GetComponent<MeshRenderer>().enabled = false;
+            //regions[r].control_point.GetComponent<MeshRenderer>().enabled = false;
 
         }
 
 		// Hide actual object
-		//this.GetComponent<MeshRenderer>().enabled = false;
+		this.GetComponent<MeshRenderer>().enabled = false;
 
 		create_grid = false;
 		created_ = true;
@@ -235,7 +236,7 @@ public class Voronoi_Test : MonoBehaviour
 	public bool VoronoiBreak()
 	{
         // Hide actual object
-        this.GetComponent<MeshRenderer>().enabled = false;
+        //this.GetComponent<MeshRenderer>().enabled = false;
 
         // Find closest region for every object
         for (int i = 0; i<resolution; i++)
