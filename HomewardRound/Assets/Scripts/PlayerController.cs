@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     public float z_force;
 
     public float x_stop;
-    float y_stop;
+    public float y_stop;
     float z_stop;
 
     public int score = 0;
@@ -42,10 +42,15 @@ public class PlayerController : MonoBehaviour
 
     public Transform death;
 
-	// Use this for initialization
-	void Start ()
+    public AudioSource jump;
+    public AudioSource bounce;
+    public AudioSource scream;
+
+
+    // Use this for initialization
+    void Start ()
     {
-        y_stop = transform.position.y;
+        //y_stop = transform.position.y;
         z_stop = transform.position.z;
         rb = GetComponent<Rigidbody>();
 
@@ -141,6 +146,8 @@ public class PlayerController : MonoBehaviour
             {
                 y_acceleration = 0.0f;
             }
+
+            bounce.Play();
             grounded = true;
 
             transform.position = new Vector3(transform.position.x, y_stop, transform.position.z);
@@ -151,6 +158,7 @@ public class PlayerController : MonoBehaviour
         {
             y_acceleration = y_force;
             grounded = false;
+            jump.Play();
         }
     }
 
@@ -177,6 +185,8 @@ public class PlayerController : MonoBehaviour
 
             Camera.main.gameObject.GetComponent<TileMove>().enabled = true;
             LoseText.SetActive(true);
+
+            scream.Play();
 
             //rb.isKinematic = false;
         }
