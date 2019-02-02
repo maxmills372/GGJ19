@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     bool grounded = true;
 
     bool dead = false;
+    bool win = false;
 
     public bool magnet = false;
     float count = 0.0f;
@@ -56,6 +57,8 @@ public class PlayerController : MonoBehaviour
 
         LoseText.SetActive(false);
         WinText.SetActive(false);
+        win = false;
+        dead = false;
     }
 	
     void xMove()
@@ -230,6 +233,22 @@ public class PlayerController : MonoBehaviour
             {               
                 SceneManager.LoadScene(1);
             }
+            else if (Input.GetKey(KeyCode.Escape))
+            {
+                SceneManager.LoadScene(0);
+            }
+        }
+
+        if(win)
+        {
+            if (Input.GetKey(KeyCode.Return))
+            {
+                SceneManager.LoadScene(1);
+            }
+            else if (Input.GetKey(KeyCode.Escape))
+            {
+                SceneManager.LoadScene(0);
+            }
         }
 
         if (magnet == true)
@@ -283,7 +302,7 @@ public class PlayerController : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>().m_MoveSpeed = 0.0f;
             WinText.SetActive(true);
-
+            win = true;
         }
         else if (collision.gameObject.tag == "Cone")
         {

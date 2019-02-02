@@ -52,6 +52,6 @@ public class Score : MonoBehaviour
     {
         score_multiplier = 1;
         multiplier_enabled = false;
-        score_text.color = Color.black;
+        score_text.color = Color.white;
     }
 }
